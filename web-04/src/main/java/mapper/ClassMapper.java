@@ -1,9 +1,10 @@
-package com.mapper;
+package mapper;
 
-import com.pojo.Class;
-import com.pojo.ClassExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import pojo.Class;
+import pojo.ClassExample;
+
+import java.util.List;
 
 public interface ClassMapper {
     long countByExample(ClassExample example);

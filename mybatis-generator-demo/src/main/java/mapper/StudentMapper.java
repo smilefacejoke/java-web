@@ -1,9 +1,9 @@
-package com.mapper;
+package mapper;
 
-import com.pojo.Student;
-import com.pojo.StudentExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import pojo.Student;
+import pojo.StudentExample;
 
 public interface StudentMapper {
     long countByExample(StudentExample example);

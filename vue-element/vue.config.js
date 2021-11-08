@@ -49,7 +49,7 @@ module.exports = {
         //处理后台的跨域请求
         proxy: {
             "/api": {     //凡是以/api开头的请求，都转发到http://localohost:9003上
-                target: "http://localhost:9003", //跨域网址
+                target: "http://localhost:9004", //跨域网址
                 secure: true, // 如果是https接口，需要配置这个参数
                 changeOrigin: true, //自动修改http header里面的host
                 pathRewrite: {

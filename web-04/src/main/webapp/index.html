@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>展示学生列表</title>
+    <script src="/webjars/jquery/3.6.0/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="/webjars/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="/webjars/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+        .table{
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">学生列表</h3>
+            </div>
+            <table class="table">
+                <tr>
+                    <td>学号</td>
+                    <td>姓名</td>
+                    <td>性别</td>
+                    <td>年龄</td>
+                    <td>住址</td>
+                    <td>所在班级</td>
+                    <td>操作</td>
+                </tr>
+                <tbody id="tb"></tbody>
+            </table>
+        </div>
+        <div class="panel-footer text-right">
+
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    $(function () {         //相当于window.onload
+        //1.查询所有学生
+        findAllStudents();
+    })
+
+    //1.查询所有学生
+    function findAllStudents() {
+        $.post("/student?cmd=list",function(data){
+            console.log("data:",data)
+            //1.1定义存放学生信息的字符串
+            let str=""
+            //1.2为str赋值
+            data.forEach(st=>{
+                str+="<tr>"
+                str+="<td>"+st.sid+"</td>"
+                str+="<td>"+st.name+"</td>"
+                str+="<td>"+st.sex+"</td>"
+                str+="<td>"+st.age+"</td>"
+                str+="<td>"+st.addr+"</td>"
+                str+="<td>"+st.cid+"</td>"
+                str+="<td>"
+                str+="<a href='#' class='btn btn-success btn-sm'>修改</a> "
+                str+="<a href='#' class='btn btn-danger btn-sm'>删除</a>"
+                str+="<td>"
+                str+="</td>"
+                str+="<tr>";
+            })
+            //1.3为tb层添加内容
+            $("#tb").html(str)
+            // docunment.getElementById('tb').innerHTML=str;
+        },"json")
+    }
+
+</script>

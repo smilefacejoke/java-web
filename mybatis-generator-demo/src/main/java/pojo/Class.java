@@ -1,18 +1,7 @@
-package com.pojo;
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+package pojo;
 
 import java.io.Serializable;
 
-
-/**
- * @author 54350
- */
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class Class implements Serializable {
     private Integer cid;
 
