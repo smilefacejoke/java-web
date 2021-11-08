@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.StudentMapper">
+
+    <select id="findAll" resultType="pojo.Student">
+    select st.*,cname from student st,class c where c.cid=st.cid
+  </select>
+    
+<!--    添加学生-->
+    <insert id="insert" parameterType="pojo.Student">
+        insert into student values (null ,#{name},#{sex},#{age},#{addr},#{cid})
+    </insert>
+
+<!--    更新学生信息-->
+    <update id="update" parameterType="pojo.Student">
+        update student set name=#{name},sex=#{sex},age=#{age},addr=#{addr},cid=#{cid} where sid=#{sid}
+    </update>
+
+<!--    删除学生信息-->
+    <delete id="delete" parameterType="string">
+        delete from student where sid=#{value}
+    </delete>
+</mapper>
