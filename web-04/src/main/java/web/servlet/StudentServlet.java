@@ -64,8 +64,26 @@ public class StudentServlet extends HttpServlet {
             }else if("search".equals(cmd)){
                 //分页带条件查询
                 search(request,response);
+            }else if("deleteByIds".equals(cmd)){
+                deleteByIds(request,response);
             }
         }
+    }
+
+
+    //根据学生id删除学生（一个或多个)
+    private void deleteByIds(HttpServletRequest request, HttpServletResponse response) throws IOException {
+//        1. 得到要删除的学生id
+        String ids=request.getParameter("ids");
+//        2. 开始删除
+        String[] split=ids.split(",");
+        for(String s : split){
+            studentService.delete(s);
+        }
+//        3. 构造返回的R对象
+        R ok=R.ok();
+        response.getWriter().println(JSON.toJSONString(ok));
+        response.getWriter().flush();
     }
 
 
